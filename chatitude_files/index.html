@@ -6,13 +6,38 @@
 <link rel = "stylesheet" type = "text/css" href = "application.css" />
 </head>
 <body>
-TAKE MY BODY
+  <div id = 'main'>
+    <h1>Chatitude!</h1>
+    <div class = "signup">
+      <form>
+        Username:<br/>
+        <input type = "text" name = "message"/><br/>
+        Password:<br/>
+        <input type = "text" name ="password"/>
+        <input type = "submit" name = "signinSubmit"/>
+      </form>
+    </div>
 
-<script src="jquery-2.0.3.min.js"></script>
-<script src="minivents.min.js"></script>
-<script src="ace.js"></script>
-<script src="mksrepl.js"></script>
-<script src="repl.js"></script>
-<script src="m-v-p.js"></script>
+    <div class = "messageForm" >
+      <form>
+        Message:<br/>
+        <input type = "text" name = "message"/>
+        <input type = "submit" name ="submit"/>
+      </form>
+    </div>
+
+    <div id='chats'>
+
+    </div>
+
+  </div>
+  <script src="jquery-2.0.3.min.js"></script>
+  <script src="minivents.min.js"></script>
+  <!-- <script src="ace.js"></script> -->
+  <script src="mksrepl.js"></script>
+  <!-- <script src="repl.js"></script> -->
+  <script src="app.js"></script>
+  <script src="chatModel.js"></script>
+  <script src="chatPresenter.js"></script>
 </body>
 </html>
