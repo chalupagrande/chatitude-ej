@@ -1,8 +1,3 @@
-
-//change listener: 
-//call render 
-//does not require sign in
-
 (function(){
   window.Feed = {};
 
@@ -10,8 +5,11 @@
    //change listener
     var element = $('#chats'); 
     App.pubsub.on('change', function(data){
-      render(data); //??? might be this?
+      console.log("Data in Presenter", data);
+      render(data); 
     })
+
+    App.pubsub.on('fetchData', Chats.fetch)
 
    //render - call update dom func in view
     var render = function(data){
@@ -40,9 +38,8 @@
     //update dom function
     var feed = $('<div>'); 
     /////<<<< WHEN SENDING a MESSAGE DATA RETRUNS AS AN OBJECT>>>>> 
-    data.map(function(item){
+    _.map(data, function(item){
       //style these
-
       var message = item.message.replace(/<>/g,"");
 
 

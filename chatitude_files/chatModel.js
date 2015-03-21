@@ -28,8 +28,8 @@
         url: 'http://chat.api.mks.io/chats',
         type: 'POST',
         data: message,
-        success: function (data) {
-          App.pubsub.emit('change', data)
+        success: function () {
+          App.pubsub.emit('fetchData')
         },
         error: function(){
           console.log('Failed to send message!')
