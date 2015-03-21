@@ -8,7 +8,8 @@ Controller.getMessages = function(){
 }
 
 Controller.storeApiKey = function(apiKey){
-  localStorage.setItem('apiKey', apiKey)
+  debugger;
+  localStorage.setItem('apiKey', apiKey.apiToken)
 }
 
 Controller.checkSignedIn = function(){
@@ -70,7 +71,6 @@ window.View = {}
       theMessage.apiToken = token;
       Chats.send(theMessage)
       //-fetches data 
-      Controller.getMessages();
     }
 
     $('#message').val('');
@@ -86,6 +86,12 @@ window.View = {}
         password: pw
       };
       User.signup(obj);
+    }
+  );
+
+   $('#signOut').on('click',
+    function(){
+      localStorage.removeItem('apiKey');
     }
   );
 
@@ -106,11 +112,12 @@ window.View = {}
   //listener for fetch to succeed
   App.pubsub.on('change', function(data){View.render(data)});
   App.pubsub.on('fetchData', Controller.getMessages);
-  App.pubsub.on('storeData', function(key){Controller.storeApiKey(key)});
+  App.pubsub.on('storedata', function(key){Controller.storeApiKey(key)});
 
 
   //Calling initial fetch to populate page
-  Controller.getMessages()
+  setInterval(Controller.getMessages(),1000)
+
   
 })();
 

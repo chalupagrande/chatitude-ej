@@ -12,6 +12,7 @@
         type: 'POST',
         data: unpw,
         success: function (apiKey) {
+          debugger;
           //store this in localStorage
           App.pubsub.emit('storedata', apiKey);
           console.log(apiKey)
@@ -28,7 +29,6 @@
         type: 'POST',
         data: unpw,
         success: function () {
-           //store this in localStorage
            alert('You Have Signed Up successfully')
         },
         error: function(){
