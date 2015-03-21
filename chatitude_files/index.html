@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> CHATITUDE!</title>
+<link rel = "stylesheet" type = "text/css" href ="repl.css" />
+<link rel = "stylesheet" type = "text/css" href = "application.css" />
+<link rel = "stylesheet" type = "text/css" href = "styles.css" />
+</head>
+<body>
+  <div id = 'main'>
+    <h1>Chatitude!</h1>
+    <div class = "signup">
+      <form>
+        Sign Up: <br/>
+        Username:<br/>
+        <input type = "text" id="username"/><br/>
+        Password:<br/>
+        <input type = "text" id="password"/>
+      </form>
+      <button id="signIn">Sign In</button>
+      <button id = "signUp">Sign Up</button>
+    </div>
+
+    <div class = "messageForm" >
+      <form>
+        Message:<br/>
+        <input type = "text" id= "message"/>
+        <input type = "submit" id="submit"/>
+      </form>
+    </div>
+    <hr>
+
+    <div id='chats'>
+
+    </div>
+
+  </div>
+  <script src="jquery-2.0.3.min.js"></script>
+  <script src="minivents.min.js"></script>
+  <script src="mksrepl.js"></script>
+  <script src="app.js"></script>
+  <script src="chatModel.js"></script>
+  <script type="vc.js"></script>
+  <script src="userModel.js"></script>
+  <script src="underscoremin.js"></script>
+</body>
+</html>
