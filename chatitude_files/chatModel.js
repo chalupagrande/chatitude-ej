@@ -27,7 +27,7 @@
         type: 'POST',
         data: message,
         success: function () {
-          App.pubsub.emit('change')
+          App.pubsub.emit('fetchData');
         },
         error: function(){
           console.log('Failed to send message!')

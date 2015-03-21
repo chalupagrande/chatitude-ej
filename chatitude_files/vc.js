@@ -7,6 +7,10 @@ Controller.getMessages = function(){
   return Chats.fetch()
 }
 
+Controller.storeApiKey = function(apiKey){
+  localStorage.setItem('apiKey', apiKey)
+}
+
 Controller.checkSignedIn = function(){
   var token = localStorage.getItem('apiKey');
   if (token) {
@@ -14,6 +18,10 @@ Controller.checkSignedIn = function(){
   } else {
     return false;
   }
+
+}
+Controller.callSignIn = function(unpw){
+  User.signin(unpw)
 }
 //func userSignIn 
   //call User.signin() -which returns api key
@@ -39,12 +47,12 @@ window.View = {}
       var message = item.message.replace(/<>/g,""); //controller?
       //adds data
       var curMessage = $('<div class = "message">');
-      curMessage.append(item.user + " - ");
+      curMessage.append(item.user + " - ")//.append(message);
       curMessage.append(message);
       feed.prepend(curMessage)
     });
     return feed;
-  })
+  }
 
 /*~~~~~~~~~~~~~
     Listeners
@@ -62,7 +70,7 @@ window.View = {}
       theMessage.apiToken = token;
       Chats.send(theMessage)
       //-fetches data 
-      Chats.getMessages();
+      Controller.getMessages();
     }
 
     $('#message').val('');
@@ -83,15 +91,26 @@ window.View = {}
 
   //sign in listener on button click
     //calls userSignIn func in controller
-
+  $('#signIn').on('click',
+    function(){
+      var un = $('#username').val();
+      var pw = $('#password').val();
+      var obj = {
+        username: un,
+        password: pw
+      };
+      Controller.callSignIn(obj);
+    }
+  );
 
   //listener for fetch to succeed
-  App.pubsub.on('change', render(data));
+  App.pubsub.on('change', function(data){View.render(data)});
   App.pubsub.on('fetchData', Controller.getMessages);
+  App.pubsub.on('storeData', function(key){Controller.storeApiKey(key)});
 
 
   //Calling initial fetch to populate page
-  Chats.fetch();
+  Controller.getMessages()
   
 })();
 
