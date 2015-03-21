@@ -1,4 +1,4 @@
 (function(){
-  window.App = {}
-  App.pubsub = new Events()
+  window.App = {};
+  App.pubsub = new Events();
 })()
