@@ -29,7 +29,6 @@
         type: 'POST',
         data: message,
         success: function (data) {
-          var data = JSON.parse(data);
           App.pubsub.emit('change', data)
         },
         error: function(){

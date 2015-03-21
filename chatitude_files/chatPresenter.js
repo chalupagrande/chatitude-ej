@@ -39,6 +39,7 @@
   Feed.View = function(data){
     //update dom function
     var feed = $('<div>'); 
+    /////<<<< WHEN SENDING a MESSAGE DATA RETRUNS AS AN OBJECT>>>>> 
     data.map(function(item){
       //style these
 
