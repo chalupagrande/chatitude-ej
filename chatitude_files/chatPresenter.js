@@ -29,9 +29,14 @@
 
     data.map(function(item){
       //style these
+
+      var message = item.message.replace(/<>/g,"");
+
+
+
       var curMessage = $('<div class = "message">');
       curMessage.append(item.user + " - ");
-      curMessage.append(item.message);
+      curMessage.append(message);
       feed.append(curMessage)
     });
     return feed;

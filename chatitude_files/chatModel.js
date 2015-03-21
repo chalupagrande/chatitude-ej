@@ -14,7 +14,6 @@
         success: function (dataChats) {
           chats = dataChats;
           App.pubsub.emit('change', dataChats);
-          console.log("Got chats:", chats);
         },
         error: function(){
           console.log('Failed to recieve messages!')
@@ -30,7 +29,6 @@
         type: 'POST',
         data: message,
         success: function () {
-          console.log("Message sent!")
           App.pubsub.emit('change')
         },
         error: function(){

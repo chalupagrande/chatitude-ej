@@ -1,46 +1,40 @@
 // { id message time user}
 (function(){
   
-  var chats = [];
+  var user = [];
 
-  window.Chats = {
+  window.User = {
 
-    server: 'http://chat.api.mks.io/chats',
+    signin: function(unpw){
 
-    fetch: function(){
       $.ajax({
-        url: 'http://chat.api.mks.io/chats',
-        type: 'GET',
-        success: function (dataChats) {
-          chats = dataChats;
-          App.pubsub.emit('change', dataChats);
-          console.log("Got chats:", chats);
-        },
-        error: function(){
-          console.log('Failed to recieve messages!')
-        }
-      })
-    },
-
-
-
-    send: function(message){
-      $.ajax({
-        url: 'http://chat.api.mks.io/chats',
+        url: 'http://chat.api.mks.io/signin',
         type: 'POST',
-        data: message,
-        success: function () {
-          console.log("Message sent!")
-          App.pubsub.emit('change')
+        data: unpw,
+        success: function (apiKey) {
+          //store this in localStorage
+          App.pubsub.emit('storedata', apiKey);
+          console.log(apiKey)
         },
         error: function(){
-          console.log('Failed to send message!')
+          console.log('Failed to sign in!')
         }
       })
     },
 
-    returnsChats: function(){
-      return chats
+    signup: function(unpw){
+      $.ajax({
+        url: 'http://chat.api.mks.io/signup',
+        type: 'POST',
+        data: unpw,
+        success: function () {
+           //store this in localStorage
+           Alert('You Have Signed Up successfully')
+        },
+        error: function(){
+          console.log('Failed to signup!')
+        }
+      })
     },
 
   }// END APP
