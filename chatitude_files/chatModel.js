@@ -28,8 +28,9 @@
         url: 'http://chat.api.mks.io/chats',
         type: 'POST',
         data: message,
-        success: function () {
-          App.pubsub.emit('change')
+        success: function (data) {
+          var data = JSON.parse(data);
+          App.pubsub.emit('change', data)
         },
         error: function(){
           console.log('Failed to send message!')

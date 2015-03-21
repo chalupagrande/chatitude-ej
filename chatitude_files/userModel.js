@@ -29,7 +29,7 @@
         data: unpw,
         success: function () {
            //store this in localStorage
-           Alert('You Have Signed Up successfully')
+           alert('You Have Signed Up successfully')
         },
         error: function(){
           console.log('Failed to signup!')

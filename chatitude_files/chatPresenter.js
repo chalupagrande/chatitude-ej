@@ -21,12 +21,24 @@
         Feed.View(data)
       )
     }
+
+    $('#submit').on('click', function(event){
+      event.preventDefault();
+      var token = localStorage.getItem('apiKey');
+      if (token){
+        var theMessage = {}
+        theMessage.message = $('#message').val();
+        theMessage.apiToken = token;
+        Chats.send(theMessage)
+        Chats.fetch();
+      }
+      $('#message').val('');
+    })
   }
 
   Feed.View = function(data){
     //update dom function
-    var feed = $('<div>');
-
+    var feed = $('<div>'); 
     data.map(function(item){
       //style these
 
@@ -37,7 +49,7 @@
       var curMessage = $('<div class = "message">');
       curMessage.append(item.user + " - ");
       curMessage.append(message);
-      feed.append(curMessage)
+      feed.prepend(curMessage)
     });
     return feed;
 

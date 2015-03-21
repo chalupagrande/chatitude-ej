@@ -32,7 +32,7 @@
 
 
     App.pubsub.on('storedata', function(apikey){
-      localStorage.setItem('apiKey', apikey);
+      localStorage.setItem('apiKey', apikey.apiToken);
     })
   }
 
